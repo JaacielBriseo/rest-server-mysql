@@ -2,15 +2,16 @@ import express, { Application, Router } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { UserRouter } from './router/user.router';
+import { ConfigServer } from './config/config';
 
 interface ServerApi {
 	path: string;
 	route: Router;
 }
 
-export default class Server {
+export default class Server extends ConfigServer {
 	private app: Application;
-	private port: number;
+	private port: number = this.getNumberEnvVariable('PORT');
 	private apis: ServerApi[] = [
 		{
 			path: '/api/users',
@@ -19,8 +20,8 @@ export default class Server {
 	];
 
 	constructor() {
+		super();
 		this.app = express();
-		this.port = 8000;
 		this.middlewares();
 		this.routes();
 	}
