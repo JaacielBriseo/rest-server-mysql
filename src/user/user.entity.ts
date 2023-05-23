@@ -14,7 +14,16 @@ export class UserEntity extends BaseEntity {
 	lastName!: string;
 
 	@Column('text')
+	email!: string;
+
+	@Column({ select: false, type: 'text' })
+	password!: string;
+
+	@Column('text')
 	city!: string;
+
+	@Column('text')
+	phoneNumber!: string;
 
 	@Column('int')
 	province!: number;
