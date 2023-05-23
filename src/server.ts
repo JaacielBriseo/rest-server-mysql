@@ -2,8 +2,8 @@ import express, { Application, Router } from 'express';
 import { DataSource } from 'typeorm';
 import morgan from 'morgan';
 import cors from 'cors';
-import { UserRouter } from './router/user.router';
 import { ConfigServer } from './config/config';
+import { UserRouter } from './user';
 
 interface ServerApi {
 	path: string;
